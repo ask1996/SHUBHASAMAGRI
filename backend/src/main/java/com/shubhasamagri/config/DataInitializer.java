@@ -33,7 +33,6 @@ public class DataInitializer implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional
     public void run(String... args) {
         if (userRepository.count() > 0) {
             log.info("Database already has data. Skipping initialization.");
@@ -42,15 +41,19 @@ public class DataInitializer implements CommandLineRunner {
 
         log.info("Initializing sample data for ShubhaSamagri...");
 
-        createUsers();
-        List<Occasion> occasions = createOccasions();
-        List<PoojaItem> items = createPoojaItems();
-        createPoojaKits(occasions, items);
-
-        log.info("Sample data initialization complete!");
+        try {
+            createUsers();
+            List<Occasion> occasions = createOccasions();
+            List<PoojaItem> items = createPoojaItems();
+            createPoojaKits(occasions, items);
+            log.info("Sample data initialization complete!");
+        } catch (Exception e) {
+            log.error("Failed to initialize sample data: {}", e.getMessage(), e);
+        }
     }
 
-    private void createUsers() {
+    @Transactional
+    protected void createUsers() {
         User admin = User.builder()
                 .name("Admin")
                 .email("admin@shubhasamagri.com")
@@ -71,7 +74,8 @@ public class DataInitializer implements CommandLineRunner {
         log.info("Created users: admin@shubhasamagri.com / admin123 | ravi@example.com / password123");
     }
 
-    private List<Occasion> createOccasions() {
+    @Transactional
+    protected List<Occasion> createOccasions() {
         List<Occasion> occasions = Arrays.asList(
             Occasion.builder()
                 .name("Marriage")
@@ -107,7 +111,8 @@ public class DataInitializer implements CommandLineRunner {
         return occasionRepository.saveAll(occasions);
     }
 
-    private List<PoojaItem> createPoojaItems() {
+    @Transactional
+    protected List<PoojaItem> createPoojaItems() {
         List<PoojaItem> items = Arrays.asList(
             PoojaItem.builder().name("Agarbatti (Incense Sticks)").description("Premium sandalwood and jasmine incense sticks").unit("pack of 20").isAvailable(true).build(),
             PoojaItem.builder().name("Coconut").description("Fresh coconut for pooja offering").unit("pcs").isAvailable(true).build(),
@@ -129,7 +134,8 @@ public class DataInitializer implements CommandLineRunner {
         return poojaItemRepository.saveAll(items);
     }
 
-    private void createPoojaKits(List<Occasion> occasions, List<PoojaItem> items) {
+    @Transactional
+    protected void createPoojaKits(List<Occasion> occasions, List<PoojaItem> items) {
         // Map items by name for easy lookup
         Map<String, PoojaItem> itemMap = new HashMap<>();
         items.forEach(item -> itemMap.put(item.getName(), item));
