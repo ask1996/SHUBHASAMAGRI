@@ -244,7 +244,7 @@ public class DataInitializer implements CommandLineRunner {
         // Assign parent kit reference
         final PoojaKit savedKit = kit;
         kitItemsData.forEach(ki -> ki.setPoojaKit(savedKit));
-        kit.setKitItems(kitItemsData);
+        kit.setKitItems(new ArrayList<>(kitItemsData));
         poojaKitRepository.save(kit);
     }
 
