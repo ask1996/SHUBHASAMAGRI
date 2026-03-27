@@ -1,0 +1,113 @@
+{
+  "communities": [
+    {
+      "id": "brahmin_vaishnav",
+      "name": "Brahmin - Vaishnav",
+      "deity": "Lord Vishnu / Venkateswara",
+      "characteristics": "Strictly satvik; no meat, no onion, no garlic; Tulsi is sacred",
+      "unique_items": [
+        {"item": "Tulsi garland", "reason": "Mandatory for Vaishnav puja; Vishnu loves Tulsi"},
+        {"item": "Yellow flowers (Champak/Marigold)", "reason": "Vishnu's preferred flowers"},
+        {"item": "Panchamrut (5 nectars)", "reason": "For abhishekam of Vishnu idol"},
+        {"item": "Mathura Peda / Satvik sweets", "reason": "Prasad must be satvik (pure vegetarian, no onion/garlic)"},
+        {"item": "Pitambari cloth (yellow silk)", "reason": "Vishnu is dressed in yellow (Pitambara)"}
+      ],
+      "restrictions": ["No meat/fish in premises", "No onion/garlic", "Prefer Gomutra (cow urine) for purification"]
+    },
+    {
+      "id": "brahmin_shaivite",
+      "name": "Brahmin - Shaivite",
+      "deity": "Lord Shiva / Shiva-Parvati",
+      "characteristics": "Bilva leaves essential; Abhishekam with water/milk central ritual",
+      "unique_items": [
+        {"item": "Bilva Patra (Bael leaves)", "reason": "MOST important for Shiva puja; symbolizes Shiva's trident"},
+        {"item": "White flowers (Dhatura / Akko)", "reason": "Shiva accepts white flowers; marigold not preferred"},
+        {"item": "Vibhuti (Sacred ash)", "reason": "Applied to forehead; Shiva's signature item"},
+        {"item": "Rudraksha (prayer beads)", "reason": "Rudraksha mala for japa; sacred to Shiva"},
+        {"item": "Milk for abhishekam", "reason": "Continuous milk bathing of Shivalinga"},
+        {"item": "Honey for abhishekam", "reason": "One of the Panchamrut items for Shiva"},
+        {"item": "Black Sesame seeds (Til)", "reason": "Offered to Shiva; used in Mahamrityunjaya homa"}
+      ]
+    },
+    {
+      "id": "brahmin_smarta",
+      "name": "Brahmin - Smarta",
+      "deity": "Panchayatana (5 deities: Ganesha, Vishnu, Shiva, Devi, Surya)",
+      "characteristics": "Worship all deities; most flexible in community",
+      "unique_items": [
+        {"item": "Panchadevata items", "reason": "Items for all 5 deities in one puja"},
+        {"item": "Red and yellow kumkum", "reason": "Used for Ganesha and Devi respectively"},
+        {"item": "Variety of flowers", "reason": "Different flowers for different deities"}
+      ]
+    },
+    {
+      "id": "kshatriya",
+      "name": "Kshatriya (Rajput, Kamma, Kapu, Reddy, etc.)",
+      "characteristics": "Warrior community; Shakti (Devi) worship prominent",
+      "unique_items": [
+        {"item": "Red cloth / Chunni", "reason": "Devi/Shakti is worshipped with red; offered red cloth"},
+        {"item": "Kumkum in abundance", "reason": "Devi worship requires lots of kumkum"},
+        {"item": "Naivedyam (non-veg may be included)", "reason": "Some Kshatriya communities offer non-vegetarian prasad to Kali/Durga"},
+        {"item": "Flowers: Red hibiscus (Japa)", "reason": "Devi's preferred flower"}
+      ]
+    },
+    {
+      "id": "vaishya_komati",
+      "name": "Vaishya (Komati, Baniya, Chettiars, etc.)",
+      "characteristics": "Merchant community; Lakshmi worship prominent; commercial prosperity emphasis",
+      "unique_items": [
+        {"item": "Gold coins (symbolic)", "reason": "Lakshmi puja with gold items for prosperity"},
+        {"item": "Lotus flowers (Padma)", "reason": "Lakshmi's flower; mandatory in Lakshmi puja"},
+        {"item": "Coins in Kalash", "reason": "Coins placed in ritual pot for wealth"},
+        {"item": "Turmeric Ganesh", "reason": "Specific to Komati community - Ganesha idol made from turmeric"},
+        {"item": "Chandan (Sandalwood) paste + powder", "reason": "Specific ritual use by Komati community"}
+      ]
+    },
+    {
+      "id": "obc_bc",
+      "name": "OBC / Backward Classes (Nayee Brahmin, Vishwakarma, Yadav, Kuruma, etc.)",
+      "characteristics": "Community-specific deity worship; often worships occupational deities",
+      "unique_items": [
+        {"item": "Vishwakarma puja items", "reason": "On Vishwakarma Jayanti, tools are worshipped"},
+        {"item": "Kula Devata items", "reason": "Each community has specific clan deity requiring specific items"},
+        {"item": "Standard puja items", "reason": "Core items same as mainstream"}
+      ]
+    },
+    {
+      "id": "sc_st",
+      "name": "Scheduled Caste / Scheduled Tribe",
+      "characteristics": "Diverse traditions; many follow Ambedkarite Buddhism or Christianity now; traditional families continue Hindu customs",
+      "unique_items": [
+        {"item": "Standard puja items", "reason": "For those following Hindu traditions"},
+        {"item": "Neem leaves", "reason": "Used extensively for purification in many SC communities"},
+        {"item": "Grain offerings (Rice, Wheat)", "reason": "Ancestral offerings common"}
+      ]
+    }
+  ],
+  "budget_tiers": [
+    {
+      "tier": "basic",
+      "range_inr": "300 - 700",
+      "description": "Essential items only; suitable for small family ceremony or daily puja",
+      "includes": ["Agarbatti", "Camphor", "Kumkum", "Turmeric", "Coconut (1-3)", "Flowers (1 garland)", "Diya + wicks"]
+    },
+    {
+      "tier": "standard",
+      "range_inr": "700 - 2000",
+      "description": "Complete items for the occasion; suitable for family with 20-50 guests",
+      "includes": ["All basic items", "Ghee", "Full betel set", "Multiple coconuts", "All ritual items", "Proper kit for the specific occasion"]
+    },
+    {
+      "tier": "premium",
+      "range_inr": "2000 - 5000",
+      "description": "Premium quality + complete regional items + all traditional requirements",
+      "includes": ["All standard items", "Premium flowers", "Copper/brass vessels", "Regional specialty items", "Multiple packs of everything", "Complete pandit requirements"]
+    },
+    {
+      "tier": "grand",
+      "range_inr": "5000+",
+      "description": "Elaborate ceremony for large gatherings (100+ guests); includes decoration items",
+      "includes": ["Everything in premium", "Bulk flowers", "Elaborate decoration items", "Multiple kalash sets", "All sub-ceremony items"]
+    }
+  ]
+}

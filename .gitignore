@@ -1,0 +1,36 @@
+# Maven
+backend/target/
+backend/*.iml
+!backend/src/main/resources/.gitkeep
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.production
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / Secrets
+.env
+*.env
+*.key
+
+# Logs
+*.log
+logs/
+
+# Spring Boot
+HELP.md

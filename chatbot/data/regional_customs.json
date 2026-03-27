@@ -1,0 +1,108 @@
+{
+  "regions": [
+    {
+      "id": "andhra_telangana",
+      "name": "Andhra Pradesh & Telangana (Telugu)",
+      "languages": ["Telugu"],
+      "key_characteristics": "Strong emphasis on Taamboolam (betel set), Kankanam rituals, and Vedic traditions",
+      "unique_items": [
+        {"item": "Taamboolam Set (Tamboolam)", "description": "Elaborate betel leaf, nut, and lime set; given as gift at every ritual", "occasions": ["marriage", "all"]},
+        {"item": "Kankanam (Red thread)", "description": "Tied on wrists of bride/groom, specific ceremony", "occasions": ["marriage"]},
+        {"item": "Pasupu (Fresh turmeric root)", "description": "Preferred over powder; for Haldi ceremony", "occasions": ["marriage", "naming_ceremony"]},
+        {"item": "Ariselu (Sweet)", "description": "Rice flour sweet made for celebrations", "occasions": ["marriage", "naming_ceremony"]},
+        {"item": "Muggu Powder", "description": "Rice flour for drawing auspicious Muggu (rangoli) at doorstep", "occasions": ["gruha_pravesh", "all"]},
+        {"item": "Pongali (Rice offering)", "description": "Sweet pongal offered to deity", "occasions": ["satyanarayana_vratham"]},
+        {"item": "Vadapappu (Raw lentils)", "description": "Soaked raw lentils offered in puja", "occasions": ["all"]}
+      ],
+      "traditions": [
+        "Naandi ceremony to seek ancestors' blessings before any major event",
+        "Odd numbers (11, 21, 51, 101) for coconut offerings considered auspicious",
+        "Bridal Thali (Mangal Sutra) strung with black beads and gold",
+        "Ariselu and Ladoo as prasad for most ceremonies"
+      ]
+    },
+    {
+      "id": "tamil_nadu",
+      "name": "Tamil Nadu (Tamil)",
+      "languages": ["Tamil"],
+      "key_characteristics": "Elaborate rituals with brass vilakku lamps, kanjivaram silk, kolam traditions",
+      "unique_items": [
+        {"item": "Vilakku (Brass Lamp)", "description": "Traditional brass lamp with 5 wicks; essential in every Tamil puja", "occasions": ["all"]},
+        {"item": "Karpooram (Pure camphor)", "description": "Specific purity level required for Tamil rituals", "occasions": ["all"]},
+        {"item": "Paal (Cow Milk)", "description": "Fresh cow milk specifically for abhishekam", "occasions": ["satyanarayana_vratham", "gruha_pravesh"]},
+        {"item": "Kolam Rice Powder", "description": "White rice flour for drawing Kolam (rangoli) at doorstep daily", "occasions": ["gruha_pravesh"]},
+        {"item": "Vetrilai Paaku (Betel set)", "description": "Specific arrangement: betel leaf, areca nut, lime", "occasions": ["all"]},
+        {"item": "Vadai (Savory fritter)", "description": "Offered as Naivedyam (food offering) to Lord Ganesha", "occasions": ["all"]},
+        {"item": "Pachadi (Fresh condiment)", "description": "Specific fresh condiment for feast", "occasions": ["marriage"]},
+        {"item": "Mango Leaf Toran", "description": "Specific green mango leaf arrangement for entrance", "occasions": ["gruha_pravesh", "marriage"]}
+      ],
+      "traditions": [
+        "Kolam drawn at house entrance every morning, elaborate for ceremonies",
+        "Oonjal ceremony (swing ritual) is unique to Tamil weddings",
+        "Parivattam (sacred cloth) wrapped around the deity",
+        "Panchanga reading (almanac) strictly followed for timing"
+      ]
+    },
+    {
+      "id": "karnataka",
+      "name": "Karnataka (Kannada)",
+      "languages": ["Kannada"],
+      "unique_items": [
+        {"item": "Bagina", "description": "Ritual offering basket with banana, coconut, turmeric, kumkum, betel set", "occasions": ["all"]},
+        {"item": "Talambralu", "description": "Rice + turmeric mixture showered on couple during wedding", "occasions": ["marriage"]},
+        {"item": "Kashaya", "description": "Herbal drink prepared and distributed", "occasions": ["gruha_pravesh"]}
+      ]
+    },
+    {
+      "id": "kerala",
+      "name": "Kerala (Malayalam)",
+      "languages": ["Malayalam"],
+      "unique_items": [
+        {"item": "Nilavilakku", "description": "Kerala-style traditional lamp, often with multiple wicks", "occasions": ["all"]},
+        {"item": "Pookalam Flowers", "description": "Flower carpet arrangement at entrance", "occasions": ["gruha_pravesh"]},
+        {"item": "Chakara Pongala", "description": "Sweet rice pongal with jaggery, special to Kerala", "occasions": ["satyanarayana_vratham"]},
+        {"item": "Velvet cloth (Pattavasthram)", "description": "Silk/velvet cloth for deity", "occasions": ["all"]}
+      ]
+    },
+    {
+      "id": "north_india",
+      "name": "North India (Hindi Belt: UP, Bihar, MP, Rajasthan, Punjab, Haryana)",
+      "languages": ["Hindi", "Punjabi", "Rajasthani"],
+      "unique_items": [
+        {"item": "Gangajal (Ganga Water)", "description": "Sacred Ganga water in copper vessel; used in all major rituals", "occasions": ["all"]},
+        {"item": "Tulsi Plant", "description": "Sacred Tulsi (holy basil) plant; offered water daily", "occasions": ["all"]},
+        {"item": "Sindoor (Vermilion)", "description": "Applied in hair parting of bride; marks married woman", "occasions": ["marriage"]},
+        {"item": "Suhag items", "description": "Bangles (chuda), bichiya (toe rings), mangalsutra, sindoor set", "occasions": ["marriage"]},
+        {"item": "Panchamrut", "description": "5 nectars: milk, curd, honey, ghee, sugar for abhishekam", "occasions": ["all"]},
+        {"item": "Satvik Food items", "description": "Pure vegetarian items: dal, rice, ghee for Bhojan offering", "occasions": ["all"]},
+        {"item": "Chunni / Dupatta", "description": "Cloth offered to goddess/bride", "occasions": ["marriage"]},
+        {"item": "Mishri (Rock Sugar)", "description": "Offered to deities, distributed as prasad", "occasions": ["all"]}
+      ]
+    },
+    {
+      "id": "west_india",
+      "name": "West India (Maharashtra & Gujarat)",
+      "languages": ["Marathi", "Gujarati"],
+      "unique_items": [
+        {"item": "Antarpat", "description": "Cloth screen held between bride and groom during certain ritual", "occasions": ["marriage"]},
+        {"item": "Mangalashtak (Book)", "description": "Auspicious verse book read during ceremony", "occasions": ["marriage"]},
+        {"item": "Puranpoli (Sweet Flatbread)", "description": "Traditional sweet made and offered for festivals", "occasions": ["all"]},
+        {"item": "Shrikhand items", "description": "Curd-based sweet offered as prasad", "occasions": ["all"]},
+        {"item": "Nariyal (Whole Coconut)", "description": "Specific ritual use with husk for Maharashtra", "occasions": ["all"]}
+      ]
+    },
+    {
+      "id": "east_india",
+      "name": "East India (West Bengal, Odisha)",
+      "languages": ["Bengali", "Odia"],
+      "unique_items": [
+        {"item": "Shankha (Conch Shell Bangles)", "description": "White conch shell bangles; worn by Bengali brides", "occasions": ["marriage"]},
+        {"item": "Loha (Iron Bangle)", "description": "Iron bangle worn alongside shankha by Bengali brides", "occasions": ["marriage"]},
+        {"item": "Pola (Red Coral Bangle)", "description": "Red coral bangle; part of Bengali bridal set", "occasions": ["marriage"]},
+        {"item": "Dhak drumstick + Dhuno (incense pot)", "description": "Bengali puja ritual items; dhuno is burning resin incense", "occasions": ["all"]},
+        {"item": "Mishti Doi (Sweet Curd)", "description": "Sweet curd offered and served at all auspicious occasions", "occasions": ["all"]},
+        {"item": "Alpona Materials", "description": "Rice paste for drawing auspicious patterns (Bengali kolam)", "occasions": ["all"]}
+      ]
+    }
+  ]
+}

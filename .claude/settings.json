@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/v-sanumula/git_c/ShubhaSamagri/backend/pom.xml:*)",
+      "Bash(/Users/v-sanumula/git_c/ShubhaSamagri/backend/src/main/resources/application-prod.properties:*)",
+      "WebSearch"
+    ]
+  }
+}

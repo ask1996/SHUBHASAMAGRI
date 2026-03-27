@@ -1,0 +1,172 @@
+{
+  "occasions": [
+    {
+      "id": "marriage",
+      "name": "Marriage (Vivah)",
+      "telugu_name": "Pelli",
+      "hindi_name": "Shaadi / Vivah",
+      "description": "Sacred Hindu wedding ceremony involving Vedic rituals, mangalsutra, and saptapadi (seven vows around sacred fire)",
+      "duration_days": "3-5 days typically",
+      "core_items": [
+        {"item": "Agarbatti / Incense Sticks", "quantity": "5 packs (100+ sticks)", "reason": "For creating a sacred, fragrant atmosphere throughout all rituals"},
+        {"item": "Coconut (Nariyal)", "quantity": "11 or 21 (auspicious odd numbers)", "reason": "Offered to deities; used in rituals like Ganapati puja, Vara Puja"},
+        {"item": "Turmeric Powder (Haldi/Pasupu)", "quantity": "500 grams", "reason": "Purification, applied to bride and groom in Haldi ceremony"},
+        {"item": "Kumkum (Sindoor)", "quantity": "100 grams", "reason": "Applied to bride's forehead, Mangal Sutra ceremony"},
+        {"item": "Camphor (Kapur/Karpooram)", "quantity": "3 packs", "reason": "Used in Aarti (waving of light) during all pujas"},
+        {"item": "Pure Ghee", "quantity": "500 ml - 1 liter", "reason": "Havan/Homa offerings into sacred fire (Agni)"},
+        {"item": "Marigold Garlands (Vara Mala)", "quantity": "10-15 garlands", "reason": "Decoration, exchange of garlands (Jaimala/Vara Mala ceremony)"},
+        {"item": "Copper Kalash (Sacred Pot)", "quantity": "2 pcs", "reason": "Filled with water/mango leaves for ritual sanctification"},
+        {"item": "Betel Leaves (Paan Patta)", "quantity": "3-4 bunches (50+ leaves)", "reason": "Tamboolam offerings, used in every puja step"},
+        {"item": "Betel Nuts (Supari)", "quantity": "100 grams", "reason": "Paired with betel leaves for offerings"},
+        {"item": "Sacred Thread (Kalava/Mauli)", "quantity": "3 rolls", "reason": "Tied on wrists of bride, groom, family members"},
+        {"item": "Mango Leaves", "quantity": "2-3 bunches", "reason": "Tied at entrance (Torana), placed in Kalash"},
+        {"item": "Banana (Arati plates)", "quantity": "4 dozen", "reason": "Offerings, used in Arati ceremony"},
+        {"item": "Rice (Akshat/Akshata)", "quantity": "2 kg raw rice", "reason": "Thrown at couple as blessings (showering rice = prosperity)"},
+        {"item": "Sandalwood Paste (Chandan)", "quantity": "100 grams", "reason": "Applied to idols, Tilak ceremony"},
+        {"item": "Dhoop (Resin Incense)", "quantity": "3 packs", "reason": "Deeper ritualistic fragrance for major ceremonies"},
+        {"item": "Diya / Oil Lamp", "quantity": "10 pcs", "reason": "Lit throughout ceremonies; symbolizes light and knowledge"},
+        {"item": "Cotton Wicks", "quantity": "2 packs", "reason": "For lighting diyas"},
+        {"item": "Sesame Oil / Gingelly Oil", "quantity": "500 ml", "reason": "For diya lamps"},
+        {"item": "Kum Kum + Haldi mixed set", "quantity": "2 sets", "reason": "Used in Mangal Ashtakam, blessing ceremony"}
+      ],
+      "regional_variations": {
+        "andhra_telugu": {
+          "name": "Telugu Pelli",
+          "additional_items": ["Kankanam (red thread)", "Taamboolam set (elaborate)", "Pachadi items (fresh turmeric paste)", "Mangalasnanam items (bathing ritual)", "Pellikuthuru ceremony items"],
+          "unique_rituals": ["Naandi ceremony (ancestors blessing)", "Snathakam (thread ceremony for groom)", "Vara Puja (groom worship)"]
+        },
+        "tamil": {
+          "name": "Tamil Kalyanam",
+          "additional_items": ["Thirumangalyam (thali)", "Parisattam cloth", "Kaapu (protective thread)", "Vilakku (brass lamp)"],
+          "unique_rituals": ["Nichayathartham (engagement)", "Oonjal ceremony (swing ritual)", "Nalangu (fun pre-wedding)"]
+        },
+        "kannada": {
+          "name": "Kannada Maduve",
+          "additional_items": ["Dhruva Beru", "Kashaya items", "Arishina Kumkuma"],
+          "unique_rituals": ["Seemantha", "Nalvar Pooja"]
+        },
+        "north_india": {
+          "name": "North Indian Shaadi",
+          "additional_items": ["Suhag items (bangles, bichiya/toe rings)", "Mehendi items", "Sangeet items", "Kaleera"],
+          "unique_rituals": ["Mehndi ceremony", "Sangeet", "Jaimala", "Phera (7 rounds of fire)"]
+        },
+        "bengali": {
+          "name": "Bengali Biye",
+          "additional_items": ["Shankha (conch shell bangles)", "Pola (red bangles)", "Loha (iron bangle)", "Sindoor box"],
+          "unique_rituals": ["Aiburo Bhat", "Dodhi Mangal", "Subho Drishti (first sight)"]
+        },
+        "gujarati_marathi": {
+          "name": "Gujarati/Marathi Lagna",
+          "additional_items": ["Mameru items", "Antarpat (cloth screen)", "Supratignyata items"],
+          "unique_rituals": ["Hastmelap (joining of hands)", "Saptapadi"]
+        }
+      }
+    },
+    {
+      "id": "gruha_pravesh",
+      "name": "Gruha Pravesh (Housewarming)",
+      "telugu_name": "Gruha Pravesam",
+      "hindi_name": "Griha Pravesh",
+      "description": "Sacred ceremony to purify and consecrate a new home, inviting positive energies and blessings",
+      "core_items": [
+        {"item": "Cow Milk", "quantity": "1-2 liters", "reason": "Boiling milk to overflow = prosperity overflowing"},
+        {"item": "New Brass/Copper Pot", "quantity": "1 pcs", "reason": "For boiling milk ritual (Paal Kayisu)"},
+        {"item": "Turmeric", "quantity": "100 grams", "reason": "Drawing auspicious patterns (Muggu/Rangoli threshold)"},
+        {"item": "Coconut", "quantity": "5 pcs", "reason": "Broken at threshold for Vastu puja"},
+        {"item": "Mango Leaves Toran", "quantity": "2 strings", "reason": "Hung at entrance for good luck and purification"},
+        {"item": "Pumpkin (Gummadi/Bhopla)", "quantity": "1 pcs", "reason": "Smashed at entrance to ward off evil eye"},
+        {"item": "Kumkum + Haldi", "quantity": "50g each", "reason": "For Vastu puja, marking sacred symbols"},
+        {"item": "Agarbatti", "quantity": "3 packs", "reason": "Purifying all rooms with fragrance"},
+        {"item": "Camphor", "quantity": "2 packs", "reason": "Room-by-room Aarti"},
+        {"item": "Ghee", "quantity": "250 ml", "reason": "Havan offerings for Vastu Shanti"},
+        {"item": "Diya", "quantity": "5 pcs", "reason": "Lighting every corner of the house"},
+        {"item": "Sacred Thread", "quantity": "1 roll", "reason": "Tied around door frame and wrists"},
+        {"item": "Copper Kalash", "quantity": "1 pcs", "reason": "Main ritual vessel"},
+        {"item": "Flowers - Marigold", "quantity": "5 garlands", "reason": "Decorating entrance and puja room"},
+        {"item": "Betel Leaves + Nuts", "quantity": "20 leaves + 20 nuts", "reason": "Offerings in puja"}
+      ],
+      "regional_variations": {
+        "south_india": {
+          "additional_items": ["Kolam/Muggu powder (for rangoli)", "Pongal ingredients (rice, jaggery)", "Paan leaves"],
+          "unique_rituals": ["Paal Kayisu (milk boiling ritual)", "Vastu Shanti Homa"]
+        },
+        "north_india": {
+          "additional_items": ["Gangajal (Ganga water)", "Tulsi plant", "Satvik food items for bhojan"],
+          "unique_rituals": ["Vastu Puja", "Griha Shanti Yagna", "Cow entry first"]
+        }
+      }
+    },
+    {
+      "id": "satyanarayana_vratham",
+      "name": "Satyanarayana Vratham",
+      "telugu_name": "Satyanarayan Pooja",
+      "description": "Devotional puja to Lord Satyanarayana (form of Vishnu). Performed on full moon, Ekadashi, or auspicious occasions.",
+      "core_items": [
+        {"item": "Panchamrut (5 nectars)", "quantity": "1 set", "reason": "Milk, curd, honey, ghee, sugar - for abhishekam (bathing of deity)"},
+        {"item": "Banana (Arati)", "quantity": "2 dozen", "reason": "Main fruit offering to Lord Vishnu"},
+        {"item": "Coconut", "quantity": "5 pcs", "reason": "For puja and prasad"},
+        {"item": "Wheat flour (Atta)", "quantity": "250 grams", "reason": "For making Sheera/Halwa prasad (Satyanarayan prasad)"},
+        {"item": "Jaggery (Gur)", "quantity": "250 grams", "reason": "For Sheera prasad preparation"},
+        {"item": "Ghee", "quantity": "250 ml", "reason": "For Sheera prasad and havan"},
+        {"item": "Tulsi Leaves", "quantity": "1 branch", "reason": "Sacred to Vishnu; placed in every offering"},
+        {"item": "Mango Leaves", "quantity": "20-30 leaves", "reason": "For Kalash and decoration"},
+        {"item": "Banana Leaves", "quantity": "5 pcs", "reason": "For Prasad serving"},
+        {"item": "Camphor", "quantity": "1 pack", "reason": "Aarti"},
+        {"item": "Agarbatti", "quantity": "2 packs", "reason": "Throughout puja"},
+        {"item": "Turmeric + Kumkum", "quantity": "50g each", "reason": "Tilak and decoration of deity"},
+        {"item": "Yellow Flowers", "quantity": "2 garlands", "reason": "Vishnu is worshipped with yellow flowers (Champak/Marigold)"},
+        {"item": "Betel Leaves + Nuts", "quantity": "1 bunch", "reason": "Tamboolam offerings"},
+        {"item": "Diya + Wicks", "quantity": "1 set", "reason": "For aarti lamp"}
+      ]
+    },
+    {
+      "id": "naming_ceremony",
+      "name": "Naming Ceremony (Namakarana)",
+      "telugu_name": "Namakaran",
+      "description": "11th day ceremony after birth. Baby is named following Vedic traditions with family gathered.",
+      "core_items": [
+        {"item": "New Silk Cloth for Baby", "quantity": "1 pcs", "reason": "Baby dressed in new clothes for the ceremony"},
+        {"item": "Coconut", "quantity": "3 pcs", "reason": "Offered to Goddess Lakshmi for child's prosperity"},
+        {"item": "Turmeric + Kumkum", "quantity": "25g each", "reason": "Auspicious beginning; applied to baby's forehead"},
+        {"item": "Sandalwood Paste", "quantity": "50 grams", "reason": "Applied to idol and baby's wrist"},
+        {"item": "Honey", "quantity": "small bottle", "reason": "Touched to baby's tongue (Madhu-prasana: first taste of honey)"},
+        {"item": "Ghee", "quantity": "100 ml", "reason": "Touched to baby's tongue (Ghee is sacred first food)"},
+        {"item": "Camphor", "quantity": "1 pack", "reason": "Aarti for the baby"},
+        {"item": "Agarbatti", "quantity": "2 packs", "reason": "Fragrant atmosphere for ceremony"},
+        {"item": "Flowers - Marigold", "quantity": "2 garlands", "reason": "Decoration, offerings"},
+        {"item": "Betel Leaves", "quantity": "20 leaves", "reason": "Tamboolam for the naming puja"},
+        {"item": "Banana", "quantity": "1 dozen", "reason": "Fruits for Naivedyam (food offering)"},
+        {"item": "Diya", "quantity": "2 pcs", "reason": "Sacred flame lit throughout ceremony"},
+        {"item": "Silver/Gold coin (optional)", "quantity": "1 pcs", "reason": "Placed in baby's hand as blessing"},
+        {"item": "Sacred Thread", "quantity": "1 roll", "reason": "Tied on baby's wrist as protection"}
+      ]
+    },
+    {
+      "id": "upanayanam",
+      "name": "Upanayanam (Sacred Thread Ceremony)",
+      "telugu_name": "Upanayanam / Munja",
+      "hindi_name": "Janeu / Yagnopaveetham",
+      "description": "Sacred thread ceremony (Yagnopaveetham) for boys aged 7-16. The 'second birth' initiation into Vedic studies.",
+      "core_items": [
+        {"item": "Yagnopaveetham (Sacred Thread)", "quantity": "3 pcs (+ 3 spare)", "reason": "The 3 sacred threads representing Body-Mind-Soul. Must change after any impurity."},
+        {"item": "Saffron cloth (Kavi Vastram)", "quantity": "1 pcs", "reason": "Boy wears saffron - symbolizing Brahmacharya (student life)"},
+        {"item": "Bamboo Staff (Danda)", "quantity": "1 pcs", "reason": "Brahmacharya staff; carried during Bhiksha (begging alms) ritual"},
+        {"item": "Coconut", "quantity": "7 pcs", "reason": "Offered in various stages of the 2-day ceremony"},
+        {"item": "Turmeric + Kumkum", "quantity": "100g each", "reason": "Haldi ceremony, Tilak applications throughout"},
+        {"item": "Ghee", "quantity": "250 ml", "reason": "Havan fire offerings"},
+        {"item": "Panchagavya (Cow products)", "quantity": "1 set", "reason": "Purification ritual using 5 cow products"},
+        {"item": "Sesame Seeds (Til)", "quantity": "200 grams", "reason": "Havan offerings (Til huti)"},
+        {"item": "Samidha (Sacred sticks)", "quantity": "bundle", "reason": "Wood for the sacred fire in Havan"},
+        {"item": "Mango Leaves", "quantity": "2 bunches", "reason": "Torana decoration and Kalash"},
+        {"item": "Banana Leaves", "quantity": "1 bunch", "reason": "Serving Brahmacharya bhiksha prasad"},
+        {"item": "Agarbatti", "quantity": "3 packs", "reason": "Throughout 2-day ceremony"},
+        {"item": "Camphor", "quantity": "2 packs", "reason": "Multiple Aartis"},
+        {"item": "Flowers - Marigold", "quantity": "5 garlands", "reason": "Decoration for 2-day event"},
+        {"item": "Diya + Wicks", "quantity": "2 sets", "reason": "Sacred flame maintained throughout"},
+        {"item": "Betel Leaves + Nuts", "quantity": "2 bunches", "reason": "Tamboolam for guests and pandits"},
+        {"item": "Raw Rice", "quantity": "1 kg", "reason": "Akshatam for blessings"},
+        {"item": "Sandalwood Paste", "quantity": "100 grams", "reason": "Applied to boy, idols, guests"}
+      ]
+    }
+  ]
+}

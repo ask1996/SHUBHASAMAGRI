@@ -1,0 +1,607 @@
+{
+  "info": {
+    "_postman_id": "shubha-samagri-collection-v1",
+    "name": "ShubhaSamagri API",
+    "description": "Complete Postman collection for ShubhaSamagri - Pooja Essentials Ecommerce API.\n\n**Setup:**\n1. Import this collection and the environment file\n2. Start the backend: `cd backend && mvn spring-boot:run`\n3. Run 'Login' request first to auto-save the JWT token\n4. All protected endpoints will use the token automatically\n\n**Test Credentials:**\n- Admin: admin@shubhasamagri.com / admin123\n- User: ravi@example.com / password123",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080", "type": "string" },
+    { "key": "authToken", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication",
+      "description": "User signup and login. Login response auto-saves JWT token to collection variable.",
+      "item": [
+        {
+          "name": "Signup - New User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Priya Sharma\",\n  \"email\": \"priya@example.com\",\n  \"password\": \"priya123\",\n  \"phone\": \"9876543211\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/signup", "host": ["{{baseUrl}}"], "path": ["api", "auth", "signup"] },
+            "description": "Register a new user account. Returns JWT token on success."
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 201) {",
+                "  const res = pm.response.json();",
+                "  if (res.data && res.data.token) {",
+                "    pm.collectionVariables.set('authToken', res.data.token);",
+                "    console.log('Token saved:', res.data.token.substring(0,30) + '...');",
+                "  }",
+                "  pm.test('Signup successful', () => pm.expect(res.success).to.be.true);",
+                "  pm.test('Token returned', () => pm.expect(res.data.token).to.not.be.undefined);",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Login - Test User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ravi@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] },
+            "description": "Login with test user credentials. JWT token auto-saved to {{authToken}} variable."
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 200) {",
+                "  const res = pm.response.json();",
+                "  pm.collectionVariables.set('authToken', res.data.token);",
+                "  console.log('Logged in as:', res.data.email);",
+                "  pm.test('Login successful', () => pm.expect(res.success).to.be.true);",
+                "  pm.test('JWT token present', () => pm.expect(res.data.token).to.be.a('string'));",
+                "  pm.test('User role is USER', () => pm.expect(res.data.role).to.equal('USER'));",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Login - Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@shubhasamagri.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] },
+            "description": "Login as admin to test admin-only endpoints (POST/PUT/DELETE occasions & kits)"
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 200) {",
+                "  const res = pm.response.json();",
+                "  pm.collectionVariables.set('authToken', res.data.token);",
+                "  pm.test('Admin login successful', () => pm.expect(res.data.role).to.equal('ADMIN'));",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Login - Wrong Password (should fail 401)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ravi@example.com\",\n  \"password\": \"wrongpassword\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": ["pm.test('Should return 401', () => pm.expect(pm.response.code).to.equal(401));"]
+            }
+          }]
+        }
+      ]
+    },
+    {
+      "name": "2. Occasions",
+      "description": "GET endpoints are public. POST/PUT/DELETE require ADMIN JWT token.",
+      "item": [
+        {
+          "name": "Get All Occasions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/occasions", "host": ["{{baseUrl}}"], "path": ["api", "occasions"] },
+            "description": "Public endpoint. Returns all active Hindu occasions."
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status 200', () => pm.expect(pm.response.code).to.equal(200));",
+                "pm.test('Returns occasions list', () => {",
+                "  const res = pm.response.json();",
+                "  pm.expect(res.success).to.be.true;",
+                "  pm.expect(res.data).to.be.an('array');",
+                "  pm.expect(res.data.length).to.be.greaterThan(0);",
+                "  pm.collectionVariables.set('occasionId', res.data[0].id);",
+                "});"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Get Occasion By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/occasions/1", "host": ["{{baseUrl}}"], "path": ["api", "occasions", "1"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status 200', () => pm.expect(pm.response.code).to.equal(200));",
+                "pm.test('Returns occasion with name', () => {",
+                "  const res = pm.response.json();",
+                "  pm.expect(res.data.name).to.be.a('string');",
+                "});"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Get Occasion - Not Found (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/occasions/999", "host": ["{{baseUrl}}"], "path": ["api", "occasions", "999"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": { "exec": ["pm.test('Should return 404', () => pm.expect(pm.response.code).to.equal(404));"] }
+          }]
+        },
+        {
+          "name": "Create Occasion (Admin Required)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Navratri\",\n  \"description\": \"Nine-night festival celebrating Goddess Durga with fasting, prayers, and Garba dance.\",\n  \"imageUrl\": \"https://example.com/navratri.jpg\",\n  \"isActive\": true\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/occasions", "host": ["{{baseUrl}}"], "path": ["api", "occasions"] },
+            "description": "Requires ADMIN JWT token. Login as admin first."
+          }
+        },
+        {
+          "name": "Update Occasion (Admin Required)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marriage (Updated)\",\n  \"description\": \"Updated description for the sacred Hindu wedding ceremony.\",\n  \"isActive\": true\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/occasions/1", "host": ["{{baseUrl}}"], "path": ["api", "occasions", "1"] }
+          }
+        },
+        {
+          "name": "Delete Occasion (Soft Delete, Admin Required)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/occasions/5", "host": ["{{baseUrl}}"], "path": ["api", "occasions", "5"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Pooja Kits",
+      "description": "Browse pooja kits. GET endpoints are public.",
+      "item": [
+        {
+          "name": "Get All Kits",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/kits", "host": ["{{baseUrl}}"], "path": ["api", "kits"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status 200', () => pm.expect(pm.response.code).to.equal(200));",
+                "pm.test('Returns kits with items', () => {",
+                "  const res = pm.response.json();",
+                "  pm.expect(res.data).to.be.an('array');",
+                "  pm.expect(res.data.length).to.be.greaterThan(0);",
+                "  pm.collectionVariables.set('kitId', res.data[0].id);",
+                "  pm.expect(res.data[0].kitItems).to.be.an('array');",
+                "});"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Get Kit By ID (with all items)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/kits/1", "host": ["{{baseUrl}}"], "path": ["api", "kits", "1"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status 200', () => pm.expect(pm.response.code).to.equal(200));",
+                "pm.test('Kit has price and items', () => {",
+                "  const kit = pm.response.json().data;",
+                "  pm.expect(kit.price).to.be.a('number');",
+                "  pm.expect(kit.kitItems.length).to.be.greaterThan(0);",
+                "});"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Get Kits by Occasion ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/kits/occasion/1", "host": ["{{baseUrl}}"], "path": ["api", "kits", "occasion", "1"] },
+            "description": "Get all pooja kits for occasion with ID=1 (Marriage)"
+          }
+        },
+        {
+          "name": "Get Kits by Occasion 2 (Gruha Pravesh)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/kits/occasion/2", "host": ["{{baseUrl}}"], "path": ["api", "kits", "occasion", "2"] }
+          }
+        },
+        {
+          "name": "Create Kit (Admin Required)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Deluxe Marriage Kit\",\n  \"description\": \"Premium marriage pooja kit with the finest items.\",\n  \"occasionId\": 1,\n  \"price\": 4999.00,\n  \"estimatedDeliveryDays\": 3,\n  \"kitItems\": [\n    { \"poojaItemId\": 1, \"quantity\": 5, \"unit\": \"pack of 20\" },\n    { \"poojaItemId\": 2, \"quantity\": 11, \"unit\": \"pcs\" },\n    { \"poojaItemId\": 6, \"quantity\": 2, \"unit\": \"250 ml\" }\n  ]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/kits", "host": ["{{baseUrl}}"], "path": ["api", "kits"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Cart (Requires Auth)",
+      "description": "All cart endpoints require JWT authentication. Run Login first.",
+      "item": [
+        {
+          "name": "Get My Cart",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/cart", "host": ["{{baseUrl}}"], "path": ["api", "cart"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status 200', () => pm.expect(pm.response.code).to.equal(200));",
+                "pm.test('Cart response has items array', () => {",
+                "  const cart = pm.response.json().data;",
+                "  pm.expect(cart.items).to.be.an('array');",
+                "  pm.expect(cart.totalAmount).to.be.a('number');",
+                "});"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Add Kit to Cart (Kit ID=1)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kitId\": 1,\n  \"quantity\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/cart/add", "host": ["{{baseUrl}}"], "path": ["api", "cart", "add"] },
+            "description": "Add Marriage Kit (ID=1) to cart"
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Added to cart', () => pm.expect(pm.response.code).to.equal(200));",
+                "if (pm.response.code === 200) {",
+                "  const cart = pm.response.json().data;",
+                "  if (cart.items.length > 0) {",
+                "    pm.collectionVariables.set('cartItemId', cart.items[0].id);",
+                "  }",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Add Another Kit to Cart (Kit ID=2)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kitId\": 2,\n  \"quantity\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/cart/add", "host": ["{{baseUrl}}"], "path": ["api", "cart", "add"] }
+          }
+        },
+        {
+          "name": "Update Cart Item Quantity",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/{{cartItemId}}?quantity=2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "{{cartItemId}}"],
+              "query": [{ "key": "quantity", "value": "2" }]
+            }
+          }
+        },
+        {
+          "name": "Remove Item from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/cart/{{cartItemId}}", "host": ["{{baseUrl}}"], "path": ["api", "cart", "{{cartItemId}}"] }
+          }
+        },
+        {
+          "name": "Clear Entire Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/cart/clear", "host": ["{{baseUrl}}"], "path": ["api", "cart", "clear"] }
+          }
+        },
+        {
+          "name": "Get Cart Without Auth (should fail 401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/cart", "host": ["{{baseUrl}}"], "path": ["api", "cart"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": { "exec": ["pm.test('Should return 401 without auth', () => pm.expect(pm.response.code).to.equal(401));"] }
+          }]
+        }
+      ]
+    },
+    {
+      "name": "5. Orders (Requires Auth)",
+      "description": "Order lifecycle: place → view → cancel. Re-add items to cart before placing order.",
+      "item": [
+        {
+          "name": "Place Order (cart must not be empty)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryAddress\": \"123 MG Road, Koramangala, Bengaluru, Karnataka - 560034\",\n  \"phone\": \"9876543210\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/orders", "host": ["{{baseUrl}}"], "path": ["api", "orders"] },
+            "description": "Places order from current cart. Cart is cleared after success. Add items to cart first!"
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 201) {",
+                "  const order = pm.response.json().data;",
+                "  pm.collectionVariables.set('orderId', order.id);",
+                "  pm.test('Order placed with PENDING status', () => pm.expect(order.status).to.equal('PENDING'));",
+                "  pm.test('Order has items', () => pm.expect(order.orderItems.length).to.be.greaterThan(0));",
+                "  console.log('Order ID saved:', order.id);",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Get My Orders",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/orders", "host": ["{{baseUrl}}"], "path": ["api", "orders"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status 200', () => pm.expect(pm.response.code).to.equal(200));",
+                "pm.test('Returns orders array', () => {",
+                "  pm.expect(pm.response.json().data).to.be.an('array');",
+                "});"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Get Order By ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["api", "orders", "{{orderId}}"] }
+          }
+        },
+        {
+          "name": "Cancel Order (PENDING orders only)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/orders/{{orderId}}/cancel", "host": ["{{baseUrl}}"], "path": ["api", "orders", "{{orderId}}", "cancel"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 200) {",
+                "  pm.test('Status changed to CANCELLED', () => {",
+                "    pm.expect(pm.response.json().data.status).to.equal('CANCELLED');",
+                "  });",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Place Order - Empty Cart (should fail 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryAddress\": \"Test Address, Bengaluru\",\n  \"phone\": \"9876543210\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/orders", "host": ["{{baseUrl}}"], "path": ["api", "orders"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": { "exec": ["pm.test('Should return 400 for empty cart', () => pm.expect(pm.response.code).to.equal(400));"] }
+          }]
+        }
+      ]
+    },
+    {
+      "name": "6. Full E2E Flow",
+      "description": "Run this folder in sequence to test the complete user journey:\nSignup → Browse Occasions → View Kit → Add to Cart → Place Order → View Orders",
+      "item": [
+        {
+          "name": "Step 1: Signup",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User E2E\",\n  \"email\": \"e2e_{{$randomInt}}@test.com\",\n  \"password\": \"test123\",\n  \"phone\": \"9000000001\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/signup", "host": ["{{baseUrl}}"], "path": ["api", "auth", "signup"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 201) {",
+                "  pm.collectionVariables.set('authToken', pm.response.json().data.token);",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Step 2: Browse Occasions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/occasions", "host": ["{{baseUrl}}"], "path": ["api", "occasions"] }
+          }
+        },
+        {
+          "name": "Step 3: View Kit Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/kits/1", "host": ["{{baseUrl}}"], "path": ["api", "kits", "1"] }
+          }
+        },
+        {
+          "name": "Step 4: Add to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"kitId\": 1,\n  \"quantity\": 1\n}" },
+            "url": { "raw": "{{baseUrl}}/api/cart/add", "host": ["{{baseUrl}}"], "path": ["api", "cart", "add"] }
+          }
+        },
+        {
+          "name": "Step 5: Place Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryAddress\": \"456 Brigade Road, MG Road, Bengaluru, Karnataka - 560001\",\n  \"phone\": \"9000000001\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/orders", "host": ["{{baseUrl}}"], "path": ["api", "orders"] }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 201) {",
+                "  pm.collectionVariables.set('orderId', pm.response.json().data.id);",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "Step 6: View My Orders",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/orders", "host": ["{{baseUrl}}"], "path": ["api", "orders"] }
+          }
+        }
+      ]
+    }
+  ]
+}

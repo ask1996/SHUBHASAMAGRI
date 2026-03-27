@@ -1,0 +1,26 @@
+# FastAPI framework
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-dotenv==1.0.1
+
+# LangChain stack
+langchain==0.2.16
+langchain-core==0.2.38
+langchain-groq==0.1.9
+langchain-huggingface==0.0.3
+langchain-chroma==0.1.4
+langchain-community==0.2.16
+
+# Vector store
+chromadb==0.5.0
+
+# Embeddings (multilingual, supports Hindi/Sanskrit/Telugu/Tamil)
+sentence-transformers==3.0.1
+
+# Utilities
+httpx==0.27.0
+pydantic==2.7.4
+pydantic-settings==2.3.4
+
+# Optional: for syncing with Spring Boot API
+requests==2.32.3
